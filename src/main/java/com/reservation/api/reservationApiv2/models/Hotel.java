@@ -1,4 +1,5 @@
 package com.reservation.api.reservationApiv2.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +20,7 @@ public class Hotel {
 
     @Column(name = "location")
     private String location;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "hotel")
     private List<Room> rooms;
 
