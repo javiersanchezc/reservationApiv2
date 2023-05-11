@@ -16,13 +16,22 @@ public class BookingController {
 
     @Autowired
     private BookingService bookingService;
+    @Autowired
     private BookingRepository bookingRepository;
+
+    public BookingController(BookingService bookingService, BookingRepository bookingRepository) {
+        this.bookingService = bookingService;
+        this.bookingRepository = bookingRepository;
+    }
 
     @GetMapping("listar")
     public ResponseEntity<List<Booking>> getAllBookings() {
         List<Booking> bookings = bookingRepository.findAll();
         return ResponseEntity.ok(bookings);
     }
+
+
+
 /*
     @PostMapping("crear")
     public ResponseEntity<Booking> makeReservation(@RequestBody ReservationRequest reservationRequest) {
